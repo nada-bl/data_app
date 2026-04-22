@@ -15,12 +15,12 @@ script_tag = soup.find('script', {'data-target': 'react-app.embeddedData'})
 extracted_data = []
 
 if script_tag:
-    # We use json to turn the text into a list Python understands
+    
     data_json = json.loads(script_tag.string)
     results = data_json['payload']['results']
     
     for item in results:
-        # Pull out the info for each repo
+        
         title = item.get('hl_name', '').replace('<em>', '').replace('</em>', '')
         repo_info = item.get('repo', {}).get('repository', {})
         owner = repo_info.get('owner_login', '')
